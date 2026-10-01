@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor Legal</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google APIs -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://apis.google.com/js/api.js" async defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">⚖</div>
+      <div>
+        <h1>Gestor <span>Legal</span></h1>
+        <p>Tus trámites, siempre a tiempo</p>
+      </div>
+    </div>
+    <button id="connectGoogleBtn" class="google-btn">Conectar Google Calendar</button>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <button class="menu-item active">📅 Nuevo Vencimiento</button>
+      <button class="menu-item" id="showDeadlinesBtn">📋 Mis Vencimientos</button>
+      <div class="sidebar-footer">Gestor Legal v1.0</div>
+    </aside>
+
+    <main class="content">
+      <section id="formView">
+        <div class="page-title">
+          <div>
+            <h2>Nuevo Vencimiento</h2>
+            <p>Cargá los datos del trámite para registrar el vencimiento.</p>
+          </div>
+        </div>
+
+        <form id="deadlineForm" class="card">
+          <label>
+            <span>Carátula</span>
+            <input id="caseName" type="text" placeholder="Ej.: Pérez c/ Gómez" required>
+          </label>
+
+          <label>
+            <span>Tipo de trámite</span>
+            <select id="procedure" required>
+              <option value="">Seleccioná un trámite</option>
+              <option value="Contestar Demanda" data-days="10">Contestar Demanda (10 días hábiles)</option>
+              <option value="Apelar" data-days="5">Apelar (5 días hábiles)</option>
+              <option value="Contestar Traslado" data-days="5">Contestar Traslado (5 días hábiles)</option>
+              <option value="Otro" data-days="1">Otro (1 día hábil)</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Fecha de notificación</span>
+            <input id="notificationDate" type="date" required>
+          </label>
+
+          <div class="result-box">
+            <div>
+              <strong>Vencimiento calculado</strong>
+              <small>Se cuentan días hábiles de lunes a viernes.</small>
+            </div>
+            <strong id="deadlineResult">—</strong>
+          </div>
+
+          <div class="actions">
+            <button type="reset" class="secondary">Limpiar</button>
+            <button type="submit" class="primary">✓ Guardar Vencimiento</button>
+          </div>
+        </form>
+
+        <div class="card calendar-card">
+          <div class="calendar-header">
+            <div>
+              <h3>Próximos vencimientos</h3>
+              <p>Los datos se guardan en este navegador.</p>
+            </div>
+          </div>
+          <div id="deadlineList" class="deadline-list"></div>
+        </div>
+      </section>
+
+      <section id="listView" class="hidden">
+        <div class="page-title">
+          <div>
+            <h2>Mis Vencimientos</h2>
+            <p>Consultá y enviá tus vencimientos a Google Calendar.</p>
+          </div>
+        </div>
+        <div id="allDeadlines" class="card"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
