@@ -9,7 +9,7 @@
 // Ejemplo:
 // const GOOGLE_CLIENT_ID = "1234567890-abc.apps.googleusercontent.com";
 
-const GOOGLE_CLIENT_ID = "REEMPLAZAR_CON_TU_CLIENT_ID.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "275414014661-gane95quvji0e5ujmb3lteervctm5q5d.apps.googleusercontent.com";
 
 const CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar.events";
 const DISCOVERY_DOC = "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
